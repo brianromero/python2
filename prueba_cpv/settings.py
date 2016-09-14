@@ -89,8 +89,19 @@ DATABASES = {
 
         'OPTIONS': {
             'driver': 'SQL Server',
-        },
+        },        
     },
+    'farfan': {
+       'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'DESARROLLO_CPV',
+        'USER': 'lfarfan',
+        'PASSWORD': 'lfarfan',
+        'HOST': '172.18.1.81',
+        'PORT': '',
+        'OPTIONS': {
+           'driver': 'SQL Server',
+       },
+    },   
 }
 
 
