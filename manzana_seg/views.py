@@ -12,7 +12,7 @@ def inicial(request):
     }
     return HttpResponse(template.render(context, request))
 
-def recargaTabla(request, dep, pro, dis):
+def SegrecargaTabla(request, dep, pro, dis):
 #    if dep == '0':
 #        filtroDepa = Segmentacion_prueba.objects.all().values().distinct()
 #    elif pro == '0':
@@ -43,22 +43,22 @@ def recargaTabla(request, dep, pro, dis):
 
 
 
-def recargaDepa(request,depa):
+def SegrecargaDepa(request,depa):
     filtroDepa = Departamento.objects.values('ccdd','departamento').annotate(data=Count('ccdd'))
     data = list(filtroDepa)
     return HttpResponse(json.dumps(data), content_type='application/json')
 
-def recargaProv(request, depa, prov):
+def SegrecargaProv(request, depa, prov):
     filtroPro = Provincia.objects.filter(ccdd=depa).values('ccpp','provincia').annotate(data=Count('ccdd','ccpp'))
     data = list(filtroPro)
     return HttpResponse(json.dumps(data), content_type='application/json')
     
-def recargaDis(request, depa, prov, dis):    
+def SegrecargaDis(request, depa, prov, dis):    
     filtroDist = Distrito.objects.filter(ccdd=depa, ccpp=prov).values('ccdi','distrito').annotate(data=Count('ccpp','ccdi'))
     data = list(filtroDist)
     return HttpResponse(json.dumps(data), content_type='application/json')
 
-def recargaZona(request, ubigeo):
+def SegrecargaZona(request, ubigeo):
     print "ubigeo"
     print ubigeo
     filtroZona = Zona.objects.filter(ubigeo=ubigeo).values('ubigeo','zona').annotate(data=Count('ubigeo'))

@@ -38,16 +38,16 @@
             ubigeo = depa + pro + dis;
             switch(tipo){
                 case 0:
-                    url_aux = 'recargaDepa/'+depa+'/';
+                    url_aux = 'SegrecargaDepa/'+depa+'/';
                     break;
                 case 1:
-                    url_aux = 'recargaProv/'+depa+'/'+pro+'/';
+                    url_aux = 'SegrecargaProv/'+depa+'/'+pro+'/';
                     break;
                 case 2:
-                    url_aux = 'recargaDis/'+depa+'/'+pro+'/'+dis+'/';
+                    url_aux = 'SegrecargaDis/'+depa+'/'+pro+'/'+dis+'/';
                     break;
                 case 3:
-                    url_aux = 'recargaZona/'+ubigeo+'/';
+                    url_aux = 'SegrecargaZona/'+ubigeo+'/';
                     break;
                 default: 
                     break;
@@ -130,7 +130,7 @@
             $.ajax({
                 type : 'GET',
                 dataType : 'text',
-                url : 'recargaTabla/'+depa+'/'+pro+'/'+dis+'/',
+                url : 'SegrecargaTabla/'+depa+'/'+pro+'/'+dis+'/',
                 success : function(result)
                 {
                     var json2 = jQuery.parseJSON(result);

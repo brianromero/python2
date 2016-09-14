@@ -11,11 +11,11 @@ urlpatterns = [
     #url(r'^croquisylistado/$', views.croquis),
     
     # segmentacion
-    #url(r'^segmentacion/recargaTabla/(\d+)/(\d+)/(\d+)/$', views.recargaTabla),
-    #url(r'^segmentacion/recargaDepa/(\d+)/$', views.recargaDepa),
-    #url(r'^segmentacion/recargaProv/(\d+)/(\d+)/$', views.recargaProv),
-    #url(r'^segmentacion/recargaDis/(\d+)/(\d+)/(\d+)/$', views.recargaDis),
-    #url(r'^segmentacion/recargaZona/(\d+)/$', views.recargaZona),
+    #url(r'^segmentacion/recargaTabla/(\d+)/(\d+)/(\d+)/$', views.SegrecargaTabla),
+    #url(r'^segmentacion/recargaDepa/(\d+)/$', views.SegrecargaDepa),
+    #url(r'^segmentacion/recargaProv/(\d+)/(\d+)/$', views.SegrecargaProv),
+    #url(r'^segmentacion/recargaDis/(\d+)/(\d+)/(\d+)/$', views.SegrecargaDis),
+    #url(r'^segmentacion/recargaZona/(\d+)/$', views.SegrecargaZona),
 
     # croquis y listado
     #url(r'^croquisylistado/recargaTabla/(\d+)/(\d+)/(\d+)/$', views.recargaTabla),
@@ -24,12 +24,12 @@ urlpatterns = [
     #url(r'^croquisylistado/recargaDis/(\d+)/(\d+)/(\d+)/$', views.recargaDis),
     #url(r'^croquisylistado/recargaZona/(\d+)/$', views.recargaZona),
 
-    url(r'^recargaTabla/(\d+)/(\d+)/(\d+)/$', views.recargaTabla),
+    url(r'^SegrecargaTabla/(\d+)/(\d+)/(\d+)/$', views.SegrecargaTabla),
 
-    url(r'^recargaDepa/(\d+)/$', views.recargaDepa),
-    url(r'^recargaProv/(\d+)/(\d+)/$', views.recargaProv),
-    url(r'^recargaDis/(\d+)/(\d+)/(\d+)/$', views.recargaDis),
-    url(r'^recargaZona/(\d+)/$', views.recargaZona),
+    url(r'^SegrecargaDepa/(\d+)/$', views.SegrecargaDepa),
+    url(r'^SegrecargaProv/(\d+)/(\d+)/$', views.SegrecargaProv),
+    url(r'^SegrecargaDis/(\d+)/(\d+)/(\d+)/$', views.SegrecargaDis),
+    url(r'^SegrecargaZona/(\d+)/$', views.SegrecargaZona),
 
 
     # No los uso...
