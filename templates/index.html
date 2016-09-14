@@ -10,7 +10,7 @@
         $(document).ready(function() {
             combo();
             actualizarTabla();
-        });        
+        });
 
         function combo() {
             var tipo=0;
@@ -49,7 +49,7 @@
                 case 3:
                     url_aux = 'SegrecargaZona/'+ubigeo+'/';
                     break;
-                default: 
+                default:
                     break;
             }
             $.ajax({
@@ -65,7 +65,7 @@
                         $.each(json2, function(j, result2)
                         {
                             $('#comboDepa').append($('<option>').text(result2.departamento).attr('value', result2.ccdd));
-                        });                        
+                        });
                     }
                     if(tipo==1){
                         $('#comboPro').children().remove()
@@ -90,7 +90,7 @@
                         {
                             $('#comboZona').append($('<option>').text(result2.zona).attr('value', result2.ubigeo));
                         });
-                    }                    
+                    }
                 },
                 error : function(xhr, ajaxOptions, thrownError) {
                     alert(xhr.status + ' ' + thrownError);
@@ -119,18 +119,24 @@
             html+='    </tr>';
 			html+='	</thead >';
 			html+=' <tbody >';
-            if ($("#comboDepa option:selected").val()!=0)
+            if ($("#comboDepa option:selected").val()!=0){
                 depa = $("#comboDepa option:selected").val();
-            if ($("#comboPro option:selected").val() != 0)
-                pro = $("#comboPro option:selected").val();
-            if ($("#comboDis option:selected").val() != 0)
-                dis = $("#comboDis option:selected").val();
-            if ($("#comboZona option:selected").val() != 0)
-                zona = $("#comboZona option:selected").val();
+                if ($("#comboPro option:selected").val() != 0){
+                  pro = $("#comboPro option:selected").val();
+                  if ($("#comboDis option:selected").val() != 0){
+                    dis = $("#comboDis option:selected").val();
+                    ubigeo=depa+pro+dis;
+                    if ($("#comboZona option:selected").val() != 0){
+                        zona = $("#comboZona option:selected").val();
+                    }
+                  }
+                }
+            }
             $.ajax({
                 type : 'GET',
                 dataType : 'text',
-                url : 'SegrecargaTabla/'+depa+'/'+pro+'/'+dis+'/',
+                <!--url : 'SegrecargaTabla/'+depa+'/'+pro+'/'+dis+'/',-->
+                url : 'segrecargaTabla/'+ubigeo+'/'+zona+'/',
                 success : function(result)
                 {
                     var json2 = jQuery.parseJSON(result);
@@ -195,19 +201,19 @@
                     <th>DEPARTAMENTO</th>
                     <th>
                         <select id="comboDepa" onchange="comboDepa()">
-                            <option value="0">TODOS</option>                            
+                            <option value="0">TODOS</option>
                         </select>
                     </th>
                     <th>PROVINCIA</th>
                     <th>
                         <select id="comboPro" onchange="comboPro()">
-                            <option value="0">TODOS</option>                            
+                            <option value="0">TODOS</option>
                         </select>
                     </th>
                     <th>DISTRITO</th>
                     <th>
                         <select id="comboDis" onchange="comboDis()">
-                            <option value="0">TODOS</option>                            
+                            <option value="0">TODOS</option>
                         </select>
                     </th>
                     <th>AREA</th>

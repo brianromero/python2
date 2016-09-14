@@ -4,12 +4,12 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.inicial, name='vista inicial'),
-    
+
 
     # menues
     #url(r'^segmentacion/$', views.segmentacion),
     #url(r'^croquisylistado/$', views.croquis),
-    
+
     # segmentacion
     #url(r'^segmentacion/recargaTabla/(\d+)/(\d+)/(\d+)/$', views.SegrecargaTabla),
     #url(r'^segmentacion/recargaDepa/(\d+)/$', views.SegrecargaDepa),
@@ -24,12 +24,14 @@ urlpatterns = [
     #url(r'^croquisylistado/recargaDis/(\d+)/(\d+)/(\d+)/$', views.recargaDis),
     #url(r'^croquisylistado/recargaZona/(\d+)/$', views.recargaZona),
 
-    url(r'^SegrecargaTabla/(\d+)/(\d+)/(\d+)/$', views.SegrecargaTabla),
+    #url(r'^SegrecargaTabla/(\d+)/(\d+)/(\d+)/$', views.SegrecargaTabla),
 
-    url(r'^SegrecargaDepa/(\d+)/$', views.SegrecargaDepa),
-    url(r'^SegrecargaProv/(\d+)/(\d+)/$', views.SegrecargaProv),
-    url(r'^SegrecargaDis/(\d+)/(\d+)/(\d+)/$', views.SegrecargaDis),
-    url(r'^SegrecargaZona/(\d+)/$', views.SegrecargaZona),
+    url(r'^segrecargaTabla/(\d+)/(\d+)/$', views.segrecargaTabla),
+
+    url(r'^segrecargaDepa/$', views.SegrecargaDepa),
+    url(r'^segrecargaProv/(\d+)/(\d+)/$', views.SegrecargaProv),
+    url(r'^segrecargaDis/(\d+)/(\d+)/(\d+)/$', views.SegrecargaDis),
+    url(r'^segrecargaZona/(\d+)/$', views.SegrecargaZona),
 
 
     # No los uso...

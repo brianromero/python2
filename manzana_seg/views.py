@@ -3,6 +3,7 @@ from django.template import loader
 from .models import Segmentacion_prueba, Departamento, Provincia, Distrito, Zona
 import json
 from django.db.models import Count
+from django.views.decorators.csrf import csrf_exempt
 
 def inicial(request):
     lista = Segmentacion_prueba.objects.all().values().annotate(dcount=Count('cod_dd'))
@@ -12,7 +13,7 @@ def inicial(request):
     }
     return HttpResponse(template.render(context, request))
 
-def SegrecargaTabla(request, dep, pro, dis):
+#def SegrecargaTabla(request, dep, pro, dis):
 #    if dep == '0':
 #        filtroDepa = Segmentacion_prueba.objects.all().values().distinct()
 #    elif pro == '0':
@@ -25,10 +26,10 @@ def SegrecargaTabla(request, dep, pro, dis):
 #    return HttpResponse(json.dumps(data), content_type='application/json')
 
 
-#def recargaTabla(request, ubigeo, zona):
-    depa = dep.split("??") #ubigeo.split("??")
-    prov = pro.split("????") #ubigeo.split("????")
-    dist = dis.split("??????") #ubigeo.split("??????")
+def segrecargaTabla(request, ubigeo, zona):
+    depa = ubigeo.split("??") #dep.split("??")
+    prov = ubigeo.split("????") #pro.split("????")
+    dist = ubigeo.split("??????") #dis.split("??????")
     if depa[0] == '0':
         filtro = Segmentacion_prueba.objects.all().values().distinct()
     elif prov[0] == '0':
@@ -36,14 +37,14 @@ def SegrecargaTabla(request, dep, pro, dis):
     elif dist[0] == '0':
         filtro = Segmentacion_prueba.objects.filter(cod_dd=dep, cod_prov=pro).values().distinct()
     else:
-        filtro = Segmentacion_prueba.objects.filter(cod_dd=dep, cod_prov=pro, cod_dis=dis).values().distinct()
+        filtro = Zona.objects.filter(ubigeo=ubigeo, zona=zona).values().distinct()
         print "entro fin..."
     data = list(filtro)
     return HttpResponse(json.dumps(data), content_type='application/json')
 
 
-
-def SegrecargaDepa(request,depa):
+@csrf_exempt
+def SegrecargaDepa(request):
     filtroDepa = Departamento.objects.values('ccdd','departamento').annotate(data=Count('ccdd'))
     data = list(filtroDepa)
     return HttpResponse(json.dumps(data), content_type='application/json')
@@ -52,8 +53,8 @@ def SegrecargaProv(request, depa, prov):
     filtroPro = Provincia.objects.filter(ccdd=depa).values('ccpp','provincia').annotate(data=Count('ccdd','ccpp'))
     data = list(filtroPro)
     return HttpResponse(json.dumps(data), content_type='application/json')
-    
-def SegrecargaDis(request, depa, prov, dis):    
+
+def SegrecargaDis(request, depa, prov, dis):
     filtroDist = Distrito.objects.filter(ccdd=depa, ccpp=prov).values('ccdi','distrito').annotate(data=Count('ccpp','ccdi'))
     data = list(filtroDist)
     return HttpResponse(json.dumps(data), content_type='application/json')
