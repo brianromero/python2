@@ -28,11 +28,12 @@ urlpatterns = [
 
     url(r'^segrecargaTabla/(\d+)/(\d+)/$', views.segrecargaTabla),
 
+    url(r'^segrecargaTabla01/(\d+)/(\d+)/(\d+)/(\d+)/(\d+)/$', views.segrecargaTabla01),
+
     url(r'^segrecargaDepa/$', views.SegrecargaDepa),
     url(r'^segrecargaProv/(\d+)/(\d+)/$', views.SegrecargaProv),
     url(r'^segrecargaDis/(\d+)/(\d+)/(\d+)/$', views.SegrecargaDis),
-    url(r'^segrecargaZona/(\d+)/$', views.SegrecargaZona),
-
+    url(r'^segrecargaZona/(\d+)/$', views.SegrecargaZona)
 
     # No los uso...
     #url(r'^inicio/$', views.recargaFiltroIni, name='hello'),

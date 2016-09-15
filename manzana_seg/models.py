@@ -98,7 +98,7 @@ class Distrito(models.Model):
 
 class Zona(models.Model):
     ubigeo = models.ForeignKey(Distrito, db_column='UBIGEO')
-    zona = models.CharField(db_column='ZONA', max_length=10, blank=True, null=True)
+    zona = models.CharField(db_column='ZONA', max_length=10, primary_key=True) #blank=True, null=True)
     idmanzana = models.CharField(db_column='IDMANZANA', max_length=20, blank=True, null=True)
     aeu = models.IntegerField(db_column='AEU', blank=True, null=True)
     viv_aeu = models.IntegerField(db_column='VIV_AEU', blank=True, null=True)
