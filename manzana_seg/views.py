@@ -69,17 +69,36 @@ def SegrecargaZona(request, ubigeo):
     print "fin zona"
     return HttpResponse(json.dumps(data), content_type='application/json')
 
+#def segrecargaTabla01(request, tipo, ccdd):
+#    dataAux = data(tipo, ccdd)
+#    return HttpResponse(json.dumps(dataAux), content_type='application/json')
+
+#def data(tipo, ccdd):
+#    from django.db import connection
+#   cursor = connection.cursor()
+#    print(tipo)
+#    print(ccdd)
+#    cursor.execute('exec ActualizaTabla %s', [tipo, ccdd])
+#    columns = [column[0] for column in cursor.description]
+#    menu = []
+#    for row in cursor.fetchall():
+#        menu.append(dict(zip(columns, row)))
+#    return menu
+
+
 def segrecargaTabla01(request, tipo, ccdd, ccpp, ccdi, zona):
-    depa = ccdd
-    prov = ccdd
-    dis = ccdd
-    zona = ccdd
+    dataAux = data(tipo, ccdd, ccpp, ccdi, zona)
+    return HttpResponse(json.dumps(dataAux), content_type='application/json')
+
+def data(tipo, ccdd, ccpp, ccdi, zona):    
     from django.db import connection
     cursor = connection.cursor()
-    #cursor.execute('exec ActualizaTabla (?,?,?,?,?)',(0,'0','0','0','0') )
-    cursor.execute('exec ActualizaTabla %s', [tipo,depa,prov,dis,zona])
+    cursor.execute('exec ActualizaTabla %s,%s,%s,%s,%s', (tipo,ccdd,ccpp,ccdi,zona) )
+    print cursor
     columns = [column[0] for column in cursor.description]
     menu = []
     for row in cursor.fetchall():
         menu.append(dict(zip(columns, row)))
+    print menu
     return menu
+    

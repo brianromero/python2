@@ -28,6 +28,7 @@ urlpatterns = [
 
     url(r'^segrecargaTabla/(\d+)/(\d+)/$', views.segrecargaTabla),
 
+    #url(r'^segrecargaTabla01/(\d+)/$', views.segrecargaTabla01),
     url(r'^segrecargaTabla01/(\d+)/(\d+)/(\d+)/(\d+)/(\d+)/$', views.segrecargaTabla01),
 
     url(r'^segrecargaDepa/$', views.SegrecargaDepa),
