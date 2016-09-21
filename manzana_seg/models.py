@@ -53,7 +53,6 @@ class Departamento(models.Model):
     ccdd = models.CharField(db_column='CCDD',max_length=2, primary_key=True)
     departamento = models.CharField(db_column='DEPARTAMENTO', blank=True, null=True,max_length=50)
     fec_carga = models.DateTimeField(db_column='FEC_CARGA', blank=True, null=True)
-    
     def __unicode__(self):
         return '%s , %s' % (self.ccdd, self.departamento)
 
