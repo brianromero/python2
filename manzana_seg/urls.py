@@ -12,15 +12,9 @@ urlpatterns = [
     url(r'^segrecargaZona/(\d+)/$', views.SegrecargaZona),
     url(r'^segrecargaTabla/(\d+)/(\d+)/$', views.segrecargaTabla),
     url(r'^segrecargaTabla01/(\d+)/(\d+)/(\d+)/(\d+)/(\d+)/$', views.segrecargaTabla01),
+    
+    # Croquis...
     url(r'^crorecargaTabla01/(\d+)/(\d+)/(\d+)/(\d+)/(\d+)/$', views.crorecargaTabla01),
     url(r'^crorecargaTabla02/(\d+)/(\d+)/(\d+)/(\d+)/(\d+)/$', views.crorecargaTabla02)
-    # Croquis y listado...
-#    url(r'^croquisrecargaTabla/(\d+)/(\d+)/$', views.CroquisrecargaTabla),
-#    url(r'^croquisrecargaTabla01/(\d+)/(\d+)/(\d+)/(\d+)/(\d+)/$', views.CroquisrecargaTabla01),
-#    url(r'^croquisrecargaTabla02/(\d+)/(\d+)/(\d+)/(\d+)/(\d+)/$', views.CroquisrecargaTabla02),
-#    url(r'^croquisrecargaDepa/$', views.CroquisrecargaDepa),
-#    url(r'^croquisrecargaProv/(\d+)/(\d+)/$', views.CroquisrecargaProv),
-#    url(r'^croquisrecargaDis/(\d+)/(\d+)/(\d+)/$', views.CroquisrecargaDis),
-#    url(r'^croquisrecargaZona/(\d+)/$', views.CroquisrecargaZona)
-
+    
 ]
